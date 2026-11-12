@@ -204,6 +204,7 @@ class OllamaClient:
         seed: int = 42,
         timeout: float = 300,
         num_gpu: int | None = None,
+        temperature: float = 0.0,
     ):
         self.model = model
         self.url = url.rstrip("/")
@@ -213,6 +214,7 @@ class OllamaClient:
         self.think_predict = think_predict
         self.seed = seed
         self.num_gpu = num_gpu
+        self.temperature = temperature
         self.http = httpx.Client(timeout=timeout)
 
     @classmethod
@@ -227,6 +229,8 @@ class OllamaClient:
             "seed": int(os.getenv("MAESTRO_SEED", "42")),
             "timeout": float(os.getenv("MAESTRO_TIMEOUT", "300")),
             "num_gpu": int(os.environ["MAESTRO_NUM_GPU"]) if os.getenv("MAESTRO_NUM_GPU") else None,
+            # 0 = greedy decoding (the default); the experiments raise it to measure stability.
+            "temperature": float(os.getenv("MAESTRO_TEMPERATURE", "0")),
         }
         settings.update({key: value for key, value in overrides.items() if value is not None})
         return cls(**settings)
@@ -251,7 +255,7 @@ class OllamaClient:
             "format": schema,
             "keep_alive": -1,  # keep the model in GPU memory; reloading it takes about a minute
             "options": {
-                "temperature": 0,
+                "temperature": self.temperature,
                 "seed": self.seed,
                 "num_ctx": num_ctx,
                 "num_predict": num_predict,

@@ -69,7 +69,9 @@ class CriterionResult(BaseModel):
     evidence: list[int] = Field(default_factory=list)
     checked_range: Range | None = None
     na_reason: str | None = None
-    method: Literal["standard", "generic"] = Field(description="Built-in logic or the generic evaluator")
+    method: Literal["standard", "generic", "baseline"] = Field(
+        description="Built-in logic, the generic evaluator, or the one-prompt baseline (experiments only)"
+    )
     standard_id: str | None = Field(default=None, description="Which standard criterion was recognised")
     facts: dict[str, bool] = Field(default_factory=dict, description="Answers to the narrow questions")
 
@@ -199,11 +201,19 @@ def _generic_result(
     )
 
 
-def evaluate(request: EvaluateRequest, llm: LLMClient, generic_llm: LLMClient | None = None) -> EvaluateResponse:
+def evaluate(
+    request: EvaluateRequest,
+    llm: LLMClient,
+    generic_llm: LLMClient | None = None,
+    mode: Literal["pipeline", "per_criterion"] = "pipeline",
+) -> EvaluateResponse:
     """Answer every criterion of the request. Raises LLMUnavailable or LLMOutputError on failure.
 
     `generic_llm`, if given, scores the criteria without built-in rules (usually a stronger model);
     the built-in criteria keep using `llm`.
+
+    `mode="per_criterion"` is the ablation used in the experiments: every criterion, standard or not,
+    goes to the generic evaluator (one prompt per criterion), without narrow questions or rules.
     """
     started = time.perf_counter()
     language = LANGUAGES.get(request.language.strip().upper(), "ru")
@@ -225,7 +235,9 @@ def evaluate(request: EvaluateRequest, llm: LLMClient, generic_llm: LLMClient | 
     results = []
     generic_names: list[str] = []  # who actually answered the generic criteria (a fallback may)
     for criterion in request.criteria:
-        preset_id = match_standard(criterion.rule, criterion.answer_type, criterion.is_flag, _scale_values(criterion))
+        preset_id = None if mode == "per_criterion" else match_standard(
+            criterion.rule, criterion.answer_type, criterion.is_flag, _scale_values(criterion)
+        )
         if preset_id is not None:
             results.append(_standard_result(ctx, criterion, preset_id, language))
         else:

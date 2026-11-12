@@ -1,0 +1,118 @@
+{
+  "tag": "main",
+  "system": "pipeline",
+  "run": 0,
+  "seed": 42,
+  "temperature": 0.0,
+  "model": "qwen3.5:9b",
+  "dialogs": 13,
+  "failed": 0,
+  "wall_seconds": 450.8,
+  "memory": {
+    "size_gb": 6.28,
+    "size_vram_gb": 5.49,
+    "context_length": 8192
+  },
+  "ollama_flags": {
+    "OLLAMA_FLASH_ATTENTION": "1",
+    "OLLAMA_KV_CACHE_TYPE": "q8_0"
+  },
+  "host": {
+    "python": "3.12.10",
+    "os": "Windows-11-10.0.26300-SP0"
+  },
+  "metrics": {
+    "accuracy": 0.8557692307692307,
+    "hits": 89,
+    "labels": 104,
+    "accuracy_ci95": [
+      0.7692307692307693,
+      0.9326923076923077
+    ],
+    "per_criterion": {
+      "c1": [
+        13,
+        13
+      ],
+      "c2": [
+        7,
+        13
+      ],
+      "c3": [
+        11,
+        13
+      ],
+      "c4": [
+        11,
+        13
+      ],
+      "c5": [
+        12,
+        13
+      ],
+      "c6": [
+        10,
+        13
+      ],
+      "c7": [
+        13,
+        13
+      ],
+      "c8": [
+        12,
+        13
+      ]
+    },
+    "per_language": {
+      "EN": [
+        21,
+        24
+      ],
+      "KZ": [
+        29,
+        32
+      ],
+      "RU": [
+        39,
+        48
+      ]
+    },
+    "confusion": {
+      "c2": {
+        "na->no": 2,
+        "yes->na": 1,
+        "no->na": 2,
+        "yes->no": 1
+      },
+      "c3": {
+        "no->na": 1,
+        "na->no": 1
+      },
+      "c4": {
+        "20->15": 1,
+        "0->10": 1
+      },
+      "c5": {
+        "no->yes": 1
+      },
+      "c6": {
+        "7->10": 2,
+        "10->4": 1
+      },
+      "c8": {
+        "no->yes": 1
+      }
+    },
+    "score_mae": 11.022307692307692,
+    "flag_c8": {
+      "tp": 1,
+      "fp": 1,
+      "fn": 0
+    },
+    "seconds_mean": 34.674615384615386,
+    "seconds_median": 35.032,
+    "calls_mean": 17.384615384615383,
+    "prompt_tokens_mean": 13031.846153846154,
+    "completion_tokens_mean": 1043.923076923077
+  }
+}

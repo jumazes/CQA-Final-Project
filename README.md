@@ -1,160 +1,178 @@
-# Maestro — оценка качества диалогов поддержки
+# Automated Quality Assessment of Customer-Support Dialogues with a Local LLM
 
-Прототип Conversation Quality Analytics для Freedom Broker. Система оценивает работу оператора в чатах и
-звонках на русском, казахском и английском по настраиваемому чек-листу и объясняет каждый вывод
-репликой из диалога.
+Final project, **AI Essentials: Theory and Applications** (MSc AI, year 1).
+Team: **Aslan Zhumazhanov, Temirlan Zholtayev, Alikhan Khamidulla.**
 
-**Демо: https://web.drdieb.com** — работает, пока включён ноутбук команды с моделью. Если не открывается,
-запустите проект у себя (раздел «Запуск у себя», около 10 минут).
+The system grades customer-support chats and calls of a broker (Russian, Kazakh, English) against an
+eight-criterion quality checklist, the way a human QA reviewer does, and justifies every verdict with the
+message it rests on. It runs on a laptop GPU with an open-weight model (`qwen3.5:9b` via Ollama), so
+dialogues never leave the machine and an evaluation costs nothing.
 
-**Команда Maestro:** Aslan Zhumazhanov, Askar Islyamov, Aldiyar Aspandiyar, Bekarys Serikov.
+## 1. Problem and success criteria
 
-## Коротко
+**User.** A quality reviewer in a contact centre. Today a reviewer reads a sample of dialogues and fills a
+checklist by hand: greeting, needs discovery, identification, consultation quality, empathy, dialogue
+management, closing, gross violations. Most dialogues are never reviewed.
 
-- **По каждому критерию** — ответ, баллы «набрано из возможных», обоснование и реплика-доказательство; для
-  пропущенного действия — проверенный участок, для N/A — причина.
-- **≈ 85% совпадения с ручной разметкой** на 13 новых диалогах, которых система не видела при настройке.
-- **86.5% на четырёх новых критериях**, заменивших 05, 06 и 07: изменённый в интерфейсе критерий сразу
-  оценивается по своей формулировке, без доработки кода.
-- **Вердикт и баллы считает код, а не модель.** Модель отвечает на узкие вопросы, а цитаты берутся прямо из
-  транскрипта, поэтому выдумать доказательство она не может.
-- **Локально и в облаке:** основная модель `qwen3.5:9b` работает на ноутбуке, оценка стоит $0. Облачная
-  модель подключается переключателем, а при её сбое оценка сама переходит на локальную.
-- **Работа с результатом:** апелляции с решением проверяющего, версии чек-листа, подсказка «как можно было
-  ответить», аналитика с экспортом.
+**Goal.** Grade every dialogue automatically and leave the reviewer the disputed ones.
 
-## Что посмотреть в демо
+**Success criteria** (fixed before the final test):
 
-1. **Оценённый диалог** с раскрытым критерием «Завершение» = «Нет» и критерием с N/A:
-   [p1-kz-008](https://web.drdieb.com/#/dialogs/p1-kz-008?crit=c07). Ссылка в обосновании переводит к реплике.
-   Под проваленным критерием есть кнопка **«Как можно было ответить»**: модель предложит реплику оператора.
-2. **Любой другой диалог** — кнопка «Оценить», 30–40 секунд. Например, грубое нарушение (оператор предлагает
-   перевести деньги ему лично): [p1-ru-022](https://web.drdieb.com/#/dialogs/p1-ru-022).
-3. **Звонок** с записью и проблемными моментами на аудио-таймлайне:
-   [p4-ru-001](https://web.drdieb.com/#/dialogs/p4-ru-001).
-4. **Апелляция:** в карточке роль «Оператор» → «Оспорить оценку», затем роль «Проверяющий» → решение с
-   причиной → итог пересчитывается, исходная оценка остаётся видна.
-5. **Замена критерия:** [«Чек-лист»](https://web.drdieb.com/#/checklists) → изменить критерий → сохранить
-   новую версию → «Диалоги» → переоценить.
-
-## Задание → решение
-
-| Пункт задания | Как сделано |
-|---|---|
-| 01 Чек-лист | Добавление и правка критериев: формулировка, вес, тип ответа, шкала, N/A. Сохранение версий, откат к исходному чек-листу. |
-| 02 Оценка диалога | Загрузка JSON или импорт набора по `group_id` из API организаторов. RU, KZ, EN. Реплики бота и системные события — контекст. |
-| 03 Результат | Ответ, баллы, вес, обоснование и реплика по каждому критерию; проверенный участок; причина N/A; итог и секции. Грубая ошибка — отдельной отметкой. |
-| Вес и итог | Строго по стр. 2 чек-листа: N/A исключается, вес перераспределяется, итог округляется до двух знаков. |
-| 04 Карточка | Переход из обоснования к реплике или моменту звонка, встроенный плеер с таймлайном. |
-| 05 Апелляция | Выбор критерия и комментарий; проверяющий видит спорную оценку, комментарий и фрагмент диалога. |
-| 06 Решение | Подтверждение или изменение с причиной, пересчёт итога; видны исходная оценка, решение и финальный результат. |
-| Контроль | Импорт по `group_id`, замена критерия через интерфейс, массовая оценка: 10 диалогов — около 6 минут. |
-| Формат | Интерфейс на HTML, CSS и JS без сборки, стили изолированы для встраивания в Dynamics 365 ([проверка встраивания](https://web.drdieb.com/d365-test.html)). |
-
-Сверх задания: подсказка ответа оператору по проваленному критерию, очередь «Требуют внимания», разбор
-передач от бота к оператору, интерфейс на RU, EN и KZ, переключение моделей на ходу.
-
-## Точность
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/img/accuracy-dark.svg">
-  <img alt="Совпадение с разметкой по критериям на 13 новых диалогах" src="docs/img/accuracy-light.svg" width="840">
-</picture>
-
-| Набор | Критерии | Совпадение |
+| Criterion | Target | Why |
 |---|---|---|
-| Тестовый: 13 новых диалогов, разметка человеком, при настройке не использовался | 8 стандартных | 85.6% |
-| Тот же набор | 4 новых критерия вместо 05, 06, 07 и новый флаг | 86.5% |
-| DEV: 19 диалогов, на них настраивались вопросы к модели | 8 стандартных | ≈ 87% |
+| Agreement with a human reviewer, per checklist label | ≥ 85% on unseen dialogues | close to the agreement two reviewers usually reach on subjective criteria |
+| Every verdict cites a message of the dialogue | 100% | the reviewer must be able to check the verdict in one click |
+| Latency on an 8 GB laptop GPU | ≤ 60 s per dialogue | a day of chats is graded overnight |
+| Cost and data leaving the machine | $0, none | dialogues contain personal and financial data |
 
-Эталона организаторов у нас нет, поэтому разметку делала команда по PDF-чек-листу. Самый спорный критерий —
-02 «Выявление потребности»: его условие допускает разные прочтения.
+**Why an LLM.** The checklist is written in natural language ("the operator clarified the missing details
+before answering"), dialogues are free text in three languages, and there is no labelled corpus large enough
+to train a classifier per criterion. A pretrained instruction-following model can apply the written rules
+without training data; the problem is making a *small local* model apply them reliably.
 
-## Как устроена оценка
+## 2. Data
+
+| Set | Size | Labels | Used for |
+|---|---|---|---|
+| `backend/data/dev_dataset.json` (DEV) | 65 dialogues: 60 chats (RU 30, KZ 15, EN 15) and 5 transcribed RU calls | 19 dialogues labelled by the team (`ml/data/reference/dev_reference.json`) | development of prompts and rules |
+| `ml/data/reference/heldout_*`, `calls_*` | 15 other DEV chats + the 5 calls | LLM labels (Gemini Pro, prompts in `ml/docs/*_LABELING_PROMPT.md`), spot-checked by an AI assistant, **not verified by a person** | development only; never reported as a test |
+| `ml/data/test/test_dataset.json` (TEST) | 13 dialogues: RU 6, KZ 4, EN 3; 11 chats, 2 calls | written by an annotator outside the development (A. Islyamov) from the checklist PDF, before the model ran | **final evaluation only** |
+| `ml/data/test/test_labels_new_criteria.json` | same 13 | 4 criteria the pipeline had never seen | generalisation to new checklist criteria |
+
+Dialogues are JSON records: `conversation_id`, `channel`, `language`, `transcript[]` with `speaker`
+(client / operator / bot / system), `text`, `timestamp`. The calls are real conversations with personal data
+masked by the provider. Before a dialogue is sent to any non-local model, the backend masks IINs, card
+numbers, phones, e-mails and IBANs (`backend/app/ml/pii.py`).
+
+**Split and leakage.** Prompts, rules and thresholds were developed on DEV only. TEST was scored by the
+pipeline after development. One exception is documented in §5: after the first TEST run one rule (criterion
+02) was changed; we report the score before and after.
+
+**Analysis** (`ml/eval/data_analysis.py` → `ml/results/data_analysis.md`): only 23–27% of messages are
+written by the operator, the graded party; labels are imbalanced (in TEST the gross-violation flag is set in
+1 of 13 dialogues, 15% of labels are N/A). Leakage check: no client or operator message is shared between
+DEV and TEST, and on client/operator text every TEST dialogue is at most as similar to its nearest DEV
+dialogue (Jaccard ≤ 0.042 on word 3-grams) as DEV dialogues are to each other (median 0.030, max 0.076).
+
+## 3. Method
 
 ```mermaid
 flowchart LR
-  UI["Интерфейс<br/>HTML, CSS, JS"] --> BE["Бэкенд, FastAPI<br/>чек-листы, очередь,<br/>баллы, апелляции"]
-  BE -->|POST /evaluate| ML["ML-сервис<br/>узкие вопросы → правила"]
-  ML --> Q[("qwen3.5:9b<br/>Ollama, локально")]
-  ML -.->|"новые критерии,<br/>по желанию"| C[("Облачная модель<br/>OpenAI-совместимый API")]
-  C -.->|"при сбое"| Q
+  D["Dialogue"] --> F["Facts from code<br/>first operator reply,<br/>language, pauses,<br/>system events"]
+  F --> Q["Narrow yes/no questions<br/>to the LLM, each with<br/>reasoning + cited message"]
+  Q --> C["Confirmation calls<br/>on the cited message<br/>for disputed answers"]
+  C --> R["Deterministic rules<br/>per criterion → verdict"]
+  R --> S["Score: weighted,<br/>N/A excluded"]
 ```
 
-- **Узкие вопросы вместо одного большого.** Каждый критерий разбит на вопросы «да/нет»: «есть ли приветствие в
-  первом ответе оператора?», «уточнил ли оператор недостающее до ответа?». Модель видит только нужные реплики,
-  сначала пишет рассуждение, потом ответ и номер реплики-доказательства.
-- **Вердикт выводит код** по правилам чек-листа. Однозначные случаи решаются вообще без модели: приветствие,
-  системное «личность подтверждена», «оператор закрыл чат».
-- **Спорные выводы перепроверяются.** Если модель нашла «бессвязную реплику» или «переспрос», отдельный вопрос
-  проверяет именно эту реплику: грубость или неверный ответ не должны снижать оценку за ведение диалога.
-- **Новый критерий** оценивается общим оценщиком по его тексту: сначала отдельно решается применимость (N/A),
-  потом ответ по правилу или шкале.
-- **Каждая оценка — живые вызовы модели.** Около 15 вызовов на диалог, результаты не кэшируются; у оценки
-  сохраняются модель, время и токены, у каждого вызова — хэш промпта и ответ модели.
+* **Narrow questions instead of one judgement.** Each criterion is split into yes/no questions ("Did the
+  operator greet the client in the first reply?"). The model sees only the relevant messages, writes its
+  reasoning first and must name the message that supports the answer; the JSON schema restricts the
+  message to IDs that exist, so the model cannot invent a quotation (`ml/maestro/probes.py`).
+* **The verdict and the score are computed by code** from the answers, following the checklist
+  (`ml/maestro/rules.py`, `ml/maestro/scoring.py`). Unambiguous cases (a system message "identity
+  verified", "operator closed the chat") are decided without the model.
+* **Confirmation calls.** When a question returns a damaging answer (e.g. "the client had to ask again"),
+  a second question checks exactly the cited message.
+* **New criteria** written by the user in the checklist editor are graded by a generic evaluator from
+  their wording: applicability (N/A) is decided in a separate call, then the answer (`ml/maestro/generic.py`).
+* **Baseline** (`ml/maestro/baseline.py`): the standard *LLM-as-a-judge* setup — the whole checklist
+  and the whole dialogue in one prompt, one JSON answer per criterion. Same model, same dialogue rendering,
+  same checklist text and general rules.
 
-## Локально и в облаке
+Settings: temperature 0, seed 42, JSON-schema constrained output, context window sized to the prompt
+(8k–32k tokens), `qwen3.5:9b` (Q4_K_M) on Ollama 0.40.5. All prompts are in the source files listed above.
 
-| Режим | Модель | Стоимость одного диалога | Время |
-|---|---|---|---|
-| Основной | `qwen3.5:9b` через Ollama на ноутбуке (RTX 4070 Laptop, 8 ГБ) | $0 | 30–40 с, около 15 вызовов |
-| Облачный (`MAESTRO_BACKEND=openai`) | `gpt-4.1-mini` | ≈ $0.006 со всеми вызовами (34 диалога — $0.20) | около 14 с |
-| Гибрид (`MAESTRO_GENERIC_MODEL`) | облачная модель только для новых критериев | зависит от модели | — |
+## 4. Results
 
-Провайдер переключается в интерфейсе без перезапуска. Если облачная модель недоступна (нет сети, закончилась
-оплата), ML-сервис на 10 минут переходит на локальную модель, и оценка не прерывается.
+TEST, 13 dialogues × 8 criteria = 104 labels, same model and conditions for both systems:
 
-## Запуск у себя
+| System | Agreement | 95% CI (bootstrap over dialogues) | Score MAE | s / dialogue | LLM calls |
+|---|---|---|---|---|---|
+| Baseline: one prompt (LLM-as-a-judge) | 69.2% | [59.6%, 77.9%] | 12.1 | 14.3 | 1 |
+| **Proposed pipeline** | **85.6%** | [76.9%, 93.3%] | 11.0 | 34.7 | 17.4 |
 
-Нужны Docker Desktop, [Ollama](https://ollama.com) и около 10 ГБ на диске. Рекомендуется видеокарта NVIDIA
-от 8 ГБ; без неё всё работает, но медленнее — тогда удобнее облачный режим.
+Paired difference on the same dialogues: **+16.3 points**, 95% CI [+5.8, +26.9].
+
+| Criterion | 01 | 02 | 03 | 04 | 05 | 06 | 07 | 08 |
+|---|---|---|---|---|---|---|---|---|
+| Baseline | 12/13 | 6/13 | 12/13 | **1/13** | 11/13 | 8/13 | 9/13 | 13/13 |
+| Pipeline | 13/13 | 7/13 | 11/13 | 11/13 | 12/13 | 10/13 | 13/13 | 12/13 |
+
+By language, pipeline / baseline: RU 81% / 77%, KZ 91% / 66%, EN 88% / 58%.
+
+* The baseline's largest failure is criterion 04: in 12 of 13 dialogues it answered N/A ("no request
+  was formulated") although the client had asked a question. In one holistic answer the model applies the
+  N/A conditions loosely; the pipeline decides applicability with its own question first.
+* The pipeline's weakest criterion is 02 (needs discovery): 6 of its 15 errors are the choice between N/A
+  ("the client gave enough information from the start") and yes/no, a condition that two readers can
+  read differently.
+* The pipeline is 2.4× slower (17 calls instead of 1) but stays within the 60 s budget.
+* The score error is similar (MAE 11.0 vs 12.1): N/A answers drop a criterion and re-weight the rest, so
+  many label errors change the final score less than the label agreement suggests.
+
+Full tables (per criterion, per language, errors, every disagreement, paired comparison):
+`ml/results/report.md`; raw outputs in `ml/results/main/`.
+Earlier measurements: 4 new criteria on TEST 86.5% (one prompt per new criterion); a decomposed variant of the
+generic evaluator 76.9% (rejected); thinking mode of Qwen exceeded 4096 tokens per question (rejected).
+
+## 5. Limitations
+
+* TEST has 13 dialogues; the confidence interval is wide (about ±8 points).
+* Criterion 02 was changed after the first TEST run (81.7% → 85.6% overall); the 85.6% is therefore not
+  fully independent of TEST. The baseline comparison above uses the final code for both systems.
+* Correctness of financial facts (tariffs, procedures) is not verified: there is no knowledge base.
+* Kazakh explanations were not reviewed by a native speaker.
+* GPU inference is not bit-exact; borderline answers can change between runs.
+
+## 6. Responsible use
+
+Scores can affect operators' bonuses, so the system is built as decision support: every verdict cites
+its evidence; operators can appeal a criterion; a reviewer confirms or changes it with a reason and the
+original model answer stays visible; dialogues with gross violations or low scores go to a review queue
+rather than being acted on automatically. Personal data is masked before any cloud model; by default no
+cloud model is used.
+
+Masking check (`ml/eval/pii_check.py` → `ml/results/pii_check.md`): 16 of 17 personal values masked in 24
+RU/KZ/EN cases, 0 of 9 look-alike numbers (amounts, dates, order numbers) masked. Known gap: international
+phone numbers with a four-digit group are not masked.
+
+## 7. Reproduce
+
+Requirements: Python 3.12, [uv](https://docs.astral.sh/uv/), [Ollama](https://ollama.com) ≥ 0.40, ~10 GB
+disk; an NVIDIA GPU with 8 GB is recommended.
 
 ```bash
 ollama pull qwen3.5:9b
-
-git clone https://github.com/aayafrontenda/secret-maestro-project.git
-cd secret-maestro-project
-cp ml/.env.example ml/.env              # по умолчанию локальная модель
-cp backend/.env.example backend/.env    # ORGANIZER_API_URL — для импорта наборов по group_id
-
-docker compose up -d --build
+cd ml
+uv sync                                    # exact versions from uv.lock
+uv run pytest -q                           # 111 tests, no model needed
+uv run python eval/experiments.py run --tag main --systems single_prompt,pipeline
+uv run python eval/experiments.py report   # -> ml/results/report.md, ml/results/tables.tex
+uv run python eval/data_analysis.py        # -> ml/results/data_analysis.md (no model needed)
+uv run python eval/pii_check.py            # -> ml/results/pii_check.md (no model needed)
 ```
 
-Откройте http://localhost:8000, на странице «Диалоги» загрузите `backend/data/dev_dataset.json` и нажмите
-«Оценить» в любом диалоге. Проверка: `curl http://localhost:8000/api/health` должен показать
-`"ml": {"provider": "http", "reachable": true}`.
+The full application (web UI, review workflow, appeals): `docker compose up -d --build`, then
+http://localhost:8000 (needs Ollama running on the host; see `ml/.env.example`, `backend/.env.example`).
 
-Без Docker: `cd ml && uv sync && uv run maestro serve`, затем бэкенд по [backend/README.md](backend/README.md)
-с `ML_PROVIDER=http` и `ML_SERVICE_URL=http://localhost:8001`.
+## 8. Contributions and reused components
 
-## Результаты для организаторов
+| Part | Author |
+|---|---|
+| ML evaluation pipeline, baseline, experiments (`ml/maestro`, `ml/eval/experiments.py`) | Aslan Zhumazhanov |
+| Data analysis and DEV/TEST leakage check (`ml/eval/data_analysis.py`) | Temirlan Zholtayev |
+| Personal-data masking check, responsible use (`ml/eval/pii_check.py`) | Alikhan Khamidulla |
 
-`results/dev/results.json` и `results/prod/results.json` — в формате 1.0 из приложения к гайду. Их отдаёт
-бэкенд по последней оценке каждого диалога набора (с учётом решений по апелляциям); неоценённый или упавший
-диалог попадает в файл со `status: "error"`, а не пропускается.
+Reused: web UI and backend (A. Aspandiyar, B. Serikov, A. Islyamov), parts of `ml/` (A. Aspandiyar), TEST
+labels (A. Islyamov). Tools: Claude Code as a coding assistant, Gemini Pro for development labels; all code
+reviewed and tested by the authors.
 
-```bash
-curl "http://localhost:8000/api/results/check?group_id=DEV&expected=65"   # ok, problems: []
-curl "http://localhost:8000/api/results?group_id=DEV&download=true" -o results/dev/results.json
-```
-
-То же в интерфейсе: «Аналитика» → «Сдача результатов». Без сервера: `cd backend && python -m app.cli
-export-results --group-id DEV --expect 65 --out ../results/dev/results.json`.
-
-## Ограничения
-
-- Факты о тарифах и процедурах Freedom Broker модель не проверяет: базы знаний нет. Критерий 04 оценивает
-  полноту ответа, пропуски и противоречия.
-- На пограничных случаях ответы могут немного отличаться между запусками: вычисления на видеокарте не полностью
-  детерминированы.
-- Тексты обоснований на казахском стоит проверить носителю языка.
-
-## Структура
+## Repository
 
 ```
-frontend/            интерфейс (HTML, CSS, JS)
-backend/             API, хранение, очередь, расчёт баллов, апелляции — backend/README.md
-ml/                  сервис оценки, вопросы к модели, правила, замеры — ml/README.md
-docs/                контракт фронт ↔ бэк, памятка на день контроля
-docker-compose.yml   запуск всего вместе
+ml/          evaluation pipeline, baseline, experiments, tests — ml/README.md
+backend/     FastAPI service: checklists, queue, scoring, appeals (reused)
+frontend/    web interface (reused)
+docs/        checklist PDF, API contract
 ```

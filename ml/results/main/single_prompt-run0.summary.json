@@ -1,0 +1,125 @@
+{
+  "tag": "main",
+  "system": "single_prompt",
+  "run": 0,
+  "seed": 42,
+  "temperature": 0.0,
+  "model": "qwen3.5:9b",
+  "dialogs": 13,
+  "failed": 0,
+  "wall_seconds": 186.2,
+  "memory": {
+    "size_gb": 6.28,
+    "size_vram_gb": 5.49,
+    "context_length": 8192
+  },
+  "ollama_flags": {
+    "OLLAMA_FLASH_ATTENTION": "1",
+    "OLLAMA_KV_CACHE_TYPE": "q8_0"
+  },
+  "host": {
+    "python": "3.12.10",
+    "os": "Windows-11-10.0.26300-SP0"
+  },
+  "metrics": {
+    "accuracy": 0.6923076923076923,
+    "hits": 72,
+    "labels": 104,
+    "accuracy_ci95": [
+      0.5961538461538461,
+      0.7788461538461539
+    ],
+    "per_criterion": {
+      "c1": [
+        12,
+        13
+      ],
+      "c2": [
+        6,
+        13
+      ],
+      "c3": [
+        12,
+        13
+      ],
+      "c4": [
+        1,
+        13
+      ],
+      "c5": [
+        11,
+        13
+      ],
+      "c6": [
+        8,
+        13
+      ],
+      "c7": [
+        9,
+        13
+      ],
+      "c8": [
+        13,
+        13
+      ]
+    },
+    "per_language": {
+      "EN": [
+        14,
+        24
+      ],
+      "KZ": [
+        21,
+        32
+      ],
+      "RU": [
+        37,
+        48
+      ]
+    },
+    "confusion": {
+      "c1": {
+        "no->yes": 1
+      },
+      "c2": {
+        "no->na": 1,
+        "yes->na": 3,
+        "na->yes": 2,
+        "no->yes": 1
+      },
+      "c3": {
+        "no->na": 1
+      },
+      "c4": {
+        "20->na": 9,
+        "0->na": 2,
+        "15->na": 1
+      },
+      "c5": {
+        "yes->no": 1,
+        "no->yes": 1
+      },
+      "c6": {
+        "7->10": 2,
+        "10->7": 1,
+        "4->7": 1,
+        "4->10": 1
+      },
+      "c7": {
+        "no->na": 2,
+        "no->yes": 2
+      }
+    },
+    "score_mae": 12.083846153846155,
+    "flag_c8": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "seconds_mean": 14.325,
+    "seconds_median": 13.665,
+    "calls_mean": 1,
+    "prompt_tokens_mean": 1779.1538461538462,
+    "completion_tokens_mean": 466.9230769230769
+  }
+}
