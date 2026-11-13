@@ -59,7 +59,7 @@ Contract details: [docs/ML_API.md](docs/ML_API.md).
 
 ## Accuracy
 
-There is no ground truth from the organizers, so the team labelled dialogs by the checklist PDF.
+There is no official ground truth, so dialogs were labelled by people from the checklist PDF.
 
 | Set | Criteria | Agreement |
 |---|---|---|
