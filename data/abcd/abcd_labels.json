@@ -1,0 +1,1456 @@
+{
+ "about": "Benchmark derived from ABCD (asappresearch/abcd). Natural labels come from ABCD structure, mutation labels from a known edit. Only the labelled criteria are compared. NOT organizer ground truth.",
+ "labels": [
+  {
+   "conversation_id": "abcd-3019",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c2": "yes",
+    "c3": "yes",
+    "c7": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-4671",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c2": "yes",
+    "c3": "yes",
+    "c7": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-321",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c3": "na",
+    "c7": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-4322",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c2": "yes",
+    "c3": "yes",
+    "c7": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-7931",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c3": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-10476",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c3": "na",
+    "c7": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-9996",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c2": "na",
+    "c3": "na",
+    "c7": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-5660",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c2": "yes",
+    "c3": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-9062",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c3": "na",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-2758",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c2": "yes",
+    "c3": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-10191",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c3": "na",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-3227",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c2": "yes",
+    "c3": "yes",
+    "c7": "no",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-793",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c2": "yes",
+    "c3": "yes",
+    "c7": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-4203",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c2": "na",
+    "c3": "na",
+    "c7": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-507",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c2": "yes",
+    "c3": "yes",
+    "c7": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-776",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c3": "na",
+    "c7": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-6783",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c2": "yes",
+    "c3": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-8572",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c2": "yes",
+    "c3": "yes",
+    "c7": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-8809",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c2": "yes",
+    "c3": "yes",
+    "c7": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-369",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c3": "na",
+    "c7": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-9072",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c2": "yes",
+    "c3": "yes",
+    "c7": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-6900",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c3": "na",
+    "c7": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-9600",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c2": "yes",
+    "c3": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-8317",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c3": "na",
+    "c7": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-8463",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c2": "yes",
+    "c3": "yes",
+    "c7": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-226",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c3": "yes",
+    "c7": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-4802",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c2": "na",
+    "c3": "na",
+    "c7": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-6146",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c2": "yes",
+    "c3": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-7279",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c3": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-2851",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c3": "na",
+    "c7": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-5597",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c2": "yes",
+    "c3": "yes",
+    "c7": "no",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-4498",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c2": "yes",
+    "c3": "yes",
+    "c7": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-10197",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c2": "yes",
+    "c3": "yes",
+    "c7": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-4528",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c2": "yes",
+    "c3": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-4275",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c2": "yes",
+    "c3": "yes",
+    "c7": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-4554",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c2": "yes",
+    "c3": "yes",
+    "c7": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-2899",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c2": "na",
+    "c3": "na",
+    "c7": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-8849",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c2": "na",
+    "c3": "na",
+    "c7": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-8544",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c2": "yes",
+    "c3": "yes",
+    "c7": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-651",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c2": "na",
+    "c3": "na",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-4788",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c3": "na",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-6082",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c3": "na",
+    "c7": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-7707",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "yes",
+    "c2": "yes",
+    "c3": "yes",
+    "c7": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-7554",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c3": "na",
+    "c7": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-6436",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c2": "na",
+    "c3": "na",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-5257",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c2": "yes",
+    "c3": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-9688",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c2": "yes",
+    "c3": "yes",
+    "c7": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-3464",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c2": "yes",
+    "c3": "yes",
+    "c7": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-6765",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c2": "yes",
+    "c3": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-8054",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c2": "yes",
+    "c3": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-842",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c2": "yes",
+    "c3": "yes",
+    "c7": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-6275",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c2": "yes",
+    "c3": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-5498",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c3": "na",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-1322",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c2": "yes",
+    "c3": "yes",
+    "c7": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-5730",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c2": "yes",
+    "c3": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-1277",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c2": "na",
+    "c3": "na",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-2057",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c2": "yes",
+    "c3": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-7778",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c2": "na",
+    "c3": "na",
+    "c7": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-8556",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c2": "yes",
+    "c3": "yes",
+    "c7": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-8843",
+   "kind": "natural",
+   "mutation": null,
+   "expected": {
+    "c1": "no",
+    "c2": "yes",
+    "c3": "yes",
+    "c7": "yes",
+    "c8": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-3019-no_greeting",
+   "kind": "mutation",
+   "mutation": "no_greeting",
+   "expected": {
+    "c1": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-4671-no_greeting",
+   "kind": "mutation",
+   "mutation": "no_greeting",
+   "expected": {
+    "c1": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-321-no_greeting",
+   "kind": "mutation",
+   "mutation": "no_greeting",
+   "expected": {
+    "c1": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-4322-no_greeting",
+   "kind": "mutation",
+   "mutation": "no_greeting",
+   "expected": {
+    "c1": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-7931-no_greeting",
+   "kind": "mutation",
+   "mutation": "no_greeting",
+   "expected": {
+    "c1": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-10476-no_greeting",
+   "kind": "mutation",
+   "mutation": "no_greeting",
+   "expected": {
+    "c1": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-5660-no_greeting",
+   "kind": "mutation",
+   "mutation": "no_greeting",
+   "expected": {
+    "c1": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-9062-no_greeting",
+   "kind": "mutation",
+   "mutation": "no_greeting",
+   "expected": {
+    "c1": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-3019-add_intro",
+   "kind": "mutation",
+   "mutation": "add_intro",
+   "expected": {
+    "c1": "yes"
+   }
+  },
+  {
+   "conversation_id": "abcd-4671-add_intro",
+   "kind": "mutation",
+   "mutation": "add_intro",
+   "expected": {
+    "c1": "yes"
+   }
+  },
+  {
+   "conversation_id": "abcd-321-add_intro",
+   "kind": "mutation",
+   "mutation": "add_intro",
+   "expected": {
+    "c1": "yes"
+   }
+  },
+  {
+   "conversation_id": "abcd-4322-add_intro",
+   "kind": "mutation",
+   "mutation": "add_intro",
+   "expected": {
+    "c1": "yes"
+   }
+  },
+  {
+   "conversation_id": "abcd-7931-add_intro",
+   "kind": "mutation",
+   "mutation": "add_intro",
+   "expected": {
+    "c1": "yes"
+   }
+  },
+  {
+   "conversation_id": "abcd-10476-add_intro",
+   "kind": "mutation",
+   "mutation": "add_intro",
+   "expected": {
+    "c1": "yes"
+   }
+  },
+  {
+   "conversation_id": "abcd-5660-add_intro",
+   "kind": "mutation",
+   "mutation": "add_intro",
+   "expected": {
+    "c1": "yes"
+   }
+  },
+  {
+   "conversation_id": "abcd-9062-add_intro",
+   "kind": "mutation",
+   "mutation": "add_intro",
+   "expected": {
+    "c1": "yes"
+   }
+  },
+  {
+   "conversation_id": "abcd-7931-reask_known",
+   "kind": "mutation",
+   "mutation": "reask_known",
+   "expected": {
+    "c2": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-5660-reask_known",
+   "kind": "mutation",
+   "mutation": "reask_known",
+   "expected": {
+    "c2": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-2758-reask_known",
+   "kind": "mutation",
+   "mutation": "reask_known",
+   "expected": {
+    "c2": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-3227-reask_known",
+   "kind": "mutation",
+   "mutation": "reask_known",
+   "expected": {
+    "c2": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-793-reask_known",
+   "kind": "mutation",
+   "mutation": "reask_known",
+   "expected": {
+    "c2": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-8572-reask_known",
+   "kind": "mutation",
+   "mutation": "reask_known",
+   "expected": {
+    "c2": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-8809-reask_known",
+   "kind": "mutation",
+   "mutation": "reask_known",
+   "expected": {
+    "c2": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-9072-reask_known",
+   "kind": "mutation",
+   "mutation": "reask_known",
+   "expected": {
+    "c2": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-5660-drop_identity",
+   "kind": "mutation",
+   "mutation": "drop_identity",
+   "expected": {
+    "c3": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-793-drop_identity",
+   "kind": "mutation",
+   "mutation": "drop_identity",
+   "expected": {
+    "c3": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-6783-drop_identity",
+   "kind": "mutation",
+   "mutation": "drop_identity",
+   "expected": {
+    "c3": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-8809-drop_identity",
+   "kind": "mutation",
+   "mutation": "drop_identity",
+   "expected": {
+    "c3": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-9072-drop_identity",
+   "kind": "mutation",
+   "mutation": "drop_identity",
+   "expected": {
+    "c3": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-9600-drop_identity",
+   "kind": "mutation",
+   "mutation": "drop_identity",
+   "expected": {
+    "c3": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-8463-drop_identity",
+   "kind": "mutation",
+   "mutation": "drop_identity",
+   "expected": {
+    "c3": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-6146-drop_identity",
+   "kind": "mutation",
+   "mutation": "drop_identity",
+   "expected": {
+    "c3": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-3019-no_goodbye",
+   "kind": "mutation",
+   "mutation": "no_goodbye",
+   "expected": {
+    "c7": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-4671-no_goodbye",
+   "kind": "mutation",
+   "mutation": "no_goodbye",
+   "expected": {
+    "c7": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-321-no_goodbye",
+   "kind": "mutation",
+   "mutation": "no_goodbye",
+   "expected": {
+    "c7": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-4322-no_goodbye",
+   "kind": "mutation",
+   "mutation": "no_goodbye",
+   "expected": {
+    "c7": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-10476-no_goodbye",
+   "kind": "mutation",
+   "mutation": "no_goodbye",
+   "expected": {
+    "c7": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-9996-no_goodbye",
+   "kind": "mutation",
+   "mutation": "no_goodbye",
+   "expected": {
+    "c7": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-793-no_goodbye",
+   "kind": "mutation",
+   "mutation": "no_goodbye",
+   "expected": {
+    "c7": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-4203-no_goodbye",
+   "kind": "mutation",
+   "mutation": "no_goodbye",
+   "expected": {
+    "c7": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-3019-cut_off",
+   "kind": "mutation",
+   "mutation": "cut_off",
+   "expected": {
+    "c7": "na"
+   }
+  },
+  {
+   "conversation_id": "abcd-4671-cut_off",
+   "kind": "mutation",
+   "mutation": "cut_off",
+   "expected": {
+    "c7": "na"
+   }
+  },
+  {
+   "conversation_id": "abcd-321-cut_off",
+   "kind": "mutation",
+   "mutation": "cut_off",
+   "expected": {
+    "c7": "na"
+   }
+  },
+  {
+   "conversation_id": "abcd-4322-cut_off",
+   "kind": "mutation",
+   "mutation": "cut_off",
+   "expected": {
+    "c7": "na"
+   }
+  },
+  {
+   "conversation_id": "abcd-7931-cut_off",
+   "kind": "mutation",
+   "mutation": "cut_off",
+   "expected": {
+    "c7": "na"
+   }
+  },
+  {
+   "conversation_id": "abcd-10476-cut_off",
+   "kind": "mutation",
+   "mutation": "cut_off",
+   "expected": {
+    "c7": "na"
+   }
+  },
+  {
+   "conversation_id": "abcd-9996-cut_off",
+   "kind": "mutation",
+   "mutation": "cut_off",
+   "expected": {
+    "c7": "na"
+   }
+  },
+  {
+   "conversation_id": "abcd-5660-cut_off",
+   "kind": "mutation",
+   "mutation": "cut_off",
+   "expected": {
+    "c7": "na"
+   }
+  },
+  {
+   "conversation_id": "abcd-3019-insult",
+   "kind": "mutation",
+   "mutation": "insult",
+   "expected": {
+    "c8": "yes"
+   }
+  },
+  {
+   "conversation_id": "abcd-4671-insult",
+   "kind": "mutation",
+   "mutation": "insult",
+   "expected": {
+    "c8": "yes"
+   }
+  },
+  {
+   "conversation_id": "abcd-321-insult",
+   "kind": "mutation",
+   "mutation": "insult",
+   "expected": {
+    "c8": "yes"
+   }
+  },
+  {
+   "conversation_id": "abcd-4322-insult",
+   "kind": "mutation",
+   "mutation": "insult",
+   "expected": {
+    "c8": "yes"
+   }
+  },
+  {
+   "conversation_id": "abcd-7931-insult",
+   "kind": "mutation",
+   "mutation": "insult",
+   "expected": {
+    "c8": "yes"
+   }
+  },
+  {
+   "conversation_id": "abcd-10476-insult",
+   "kind": "mutation",
+   "mutation": "insult",
+   "expected": {
+    "c8": "yes"
+   }
+  },
+  {
+   "conversation_id": "abcd-9996-insult",
+   "kind": "mutation",
+   "mutation": "insult",
+   "expected": {
+    "c8": "yes"
+   }
+  },
+  {
+   "conversation_id": "abcd-5660-insult",
+   "kind": "mutation",
+   "mutation": "insult",
+   "expected": {
+    "c8": "yes"
+   }
+  },
+  {
+   "conversation_id": "abcd-3019-off_company_offer",
+   "kind": "mutation",
+   "mutation": "off_company_offer",
+   "expected": {
+    "c8": "yes"
+   }
+  },
+  {
+   "conversation_id": "abcd-4671-off_company_offer",
+   "kind": "mutation",
+   "mutation": "off_company_offer",
+   "expected": {
+    "c8": "yes"
+   }
+  },
+  {
+   "conversation_id": "abcd-321-off_company_offer",
+   "kind": "mutation",
+   "mutation": "off_company_offer",
+   "expected": {
+    "c8": "yes"
+   }
+  },
+  {
+   "conversation_id": "abcd-4322-off_company_offer",
+   "kind": "mutation",
+   "mutation": "off_company_offer",
+   "expected": {
+    "c8": "yes"
+   }
+  },
+  {
+   "conversation_id": "abcd-7931-off_company_offer",
+   "kind": "mutation",
+   "mutation": "off_company_offer",
+   "expected": {
+    "c8": "yes"
+   }
+  },
+  {
+   "conversation_id": "abcd-10476-off_company_offer",
+   "kind": "mutation",
+   "mutation": "off_company_offer",
+   "expected": {
+    "c8": "yes"
+   }
+  },
+  {
+   "conversation_id": "abcd-9996-off_company_offer",
+   "kind": "mutation",
+   "mutation": "off_company_offer",
+   "expected": {
+    "c8": "yes"
+   }
+  },
+  {
+   "conversation_id": "abcd-5660-off_company_offer",
+   "kind": "mutation",
+   "mutation": "off_company_offer",
+   "expected": {
+    "c8": "yes"
+   }
+  },
+  {
+   "conversation_id": "abcd-3019-confidential_disclosure",
+   "kind": "mutation",
+   "mutation": "confidential_disclosure",
+   "expected": {
+    "c8": "yes"
+   }
+  },
+  {
+   "conversation_id": "abcd-4671-confidential_disclosure",
+   "kind": "mutation",
+   "mutation": "confidential_disclosure",
+   "expected": {
+    "c8": "yes"
+   }
+  },
+  {
+   "conversation_id": "abcd-321-confidential_disclosure",
+   "kind": "mutation",
+   "mutation": "confidential_disclosure",
+   "expected": {
+    "c8": "yes"
+   }
+  },
+  {
+   "conversation_id": "abcd-4322-confidential_disclosure",
+   "kind": "mutation",
+   "mutation": "confidential_disclosure",
+   "expected": {
+    "c8": "yes"
+   }
+  },
+  {
+   "conversation_id": "abcd-7931-confidential_disclosure",
+   "kind": "mutation",
+   "mutation": "confidential_disclosure",
+   "expected": {
+    "c8": "yes"
+   }
+  },
+  {
+   "conversation_id": "abcd-10476-confidential_disclosure",
+   "kind": "mutation",
+   "mutation": "confidential_disclosure",
+   "expected": {
+    "c8": "yes"
+   }
+  },
+  {
+   "conversation_id": "abcd-9996-confidential_disclosure",
+   "kind": "mutation",
+   "mutation": "confidential_disclosure",
+   "expected": {
+    "c8": "yes"
+   }
+  },
+  {
+   "conversation_id": "abcd-5660-confidential_disclosure",
+   "kind": "mutation",
+   "mutation": "confidential_disclosure",
+   "expected": {
+    "c8": "yes"
+   }
+  },
+  {
+   "conversation_id": "abcd-3019-complaint_dismissed",
+   "kind": "mutation",
+   "mutation": "complaint_dismissed",
+   "expected": {
+    "c5": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-4671-complaint_dismissed",
+   "kind": "mutation",
+   "mutation": "complaint_dismissed",
+   "expected": {
+    "c5": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-321-complaint_dismissed",
+   "kind": "mutation",
+   "mutation": "complaint_dismissed",
+   "expected": {
+    "c5": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-4322-complaint_dismissed",
+   "kind": "mutation",
+   "mutation": "complaint_dismissed",
+   "expected": {
+    "c5": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-7931-complaint_dismissed",
+   "kind": "mutation",
+   "mutation": "complaint_dismissed",
+   "expected": {
+    "c5": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-10476-complaint_dismissed",
+   "kind": "mutation",
+   "mutation": "complaint_dismissed",
+   "expected": {
+    "c5": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-9996-complaint_dismissed",
+   "kind": "mutation",
+   "mutation": "complaint_dismissed",
+   "expected": {
+    "c5": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-5660-complaint_dismissed",
+   "kind": "mutation",
+   "mutation": "complaint_dismissed",
+   "expected": {
+    "c5": "no"
+   }
+  },
+  {
+   "conversation_id": "abcd-3019-complaint_empathy",
+   "kind": "mutation",
+   "mutation": "complaint_empathy",
+   "expected": {
+    "c5": "yes"
+   }
+  },
+  {
+   "conversation_id": "abcd-4671-complaint_empathy",
+   "kind": "mutation",
+   "mutation": "complaint_empathy",
+   "expected": {
+    "c5": "yes"
+   }
+  },
+  {
+   "conversation_id": "abcd-321-complaint_empathy",
+   "kind": "mutation",
+   "mutation": "complaint_empathy",
+   "expected": {
+    "c5": "yes"
+   }
+  },
+  {
+   "conversation_id": "abcd-4322-complaint_empathy",
+   "kind": "mutation",
+   "mutation": "complaint_empathy",
+   "expected": {
+    "c5": "yes"
+   }
+  },
+  {
+   "conversation_id": "abcd-7931-complaint_empathy",
+   "kind": "mutation",
+   "mutation": "complaint_empathy",
+   "expected": {
+    "c5": "yes"
+   }
+  },
+  {
+   "conversation_id": "abcd-10476-complaint_empathy",
+   "kind": "mutation",
+   "mutation": "complaint_empathy",
+   "expected": {
+    "c5": "yes"
+   }
+  },
+  {
+   "conversation_id": "abcd-9996-complaint_empathy",
+   "kind": "mutation",
+   "mutation": "complaint_empathy",
+   "expected": {
+    "c5": "yes"
+   }
+  },
+  {
+   "conversation_id": "abcd-5660-complaint_empathy",
+   "kind": "mutation",
+   "mutation": "complaint_empathy",
+   "expected": {
+    "c5": "yes"
+   }
+  },
+  {
+   "conversation_id": "abcd-3019-nonsequitur",
+   "kind": "mutation",
+   "mutation": "nonsequitur",
+   "expected": {
+    "c6": 0
+   }
+  },
+  {
+   "conversation_id": "abcd-4671-nonsequitur",
+   "kind": "mutation",
+   "mutation": "nonsequitur",
+   "expected": {
+    "c6": 0
+   }
+  },
+  {
+   "conversation_id": "abcd-4322-nonsequitur",
+   "kind": "mutation",
+   "mutation": "nonsequitur",
+   "expected": {
+    "c6": 0
+   }
+  },
+  {
+   "conversation_id": "abcd-7931-nonsequitur",
+   "kind": "mutation",
+   "mutation": "nonsequitur",
+   "expected": {
+    "c6": 0
+   }
+  },
+  {
+   "conversation_id": "abcd-10476-nonsequitur",
+   "kind": "mutation",
+   "mutation": "nonsequitur",
+   "expected": {
+    "c6": 0
+   }
+  },
+  {
+   "conversation_id": "abcd-5660-nonsequitur",
+   "kind": "mutation",
+   "mutation": "nonsequitur",
+   "expected": {
+    "c6": 0
+   }
+  },
+  {
+   "conversation_id": "abcd-9062-nonsequitur",
+   "kind": "mutation",
+   "mutation": "nonsequitur",
+   "expected": {
+    "c6": 0
+   }
+  },
+  {
+   "conversation_id": "abcd-2758-nonsequitur",
+   "kind": "mutation",
+   "mutation": "nonsequitur",
+   "expected": {
+    "c6": 0
+   }
+  }
+ ]
+}
