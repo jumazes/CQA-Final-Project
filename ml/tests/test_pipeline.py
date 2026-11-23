@@ -354,3 +354,19 @@ def test_a_verification_question_is_not_a_lapse():
     ])
     result = score_transcript(chat, FakeLLM({**GOOD, "noticeable_lapse": ("M2", True)}))
     assert {c.criterion_id: c.answer for c in result.criteria}["06"] == 10
+
+
+def test_english_introduction_and_goodbye_phrases():
+    from maestro.rules import GOODBYE, INTRODUCTION
+
+    for text in ["Hello, I'm Michael from support.", "Hi, I’m Maya.", "Good afternoon, this is Amy from support.",
+                 "Hello, my name's Daniel."]:
+        assert INTRODUCTION.search(text), text
+    # A company, a role or a feeling is not a name.
+    for text in ["Hello, this is Freedom Broker support.", "I'm sorry for the wait.", "I am happy to help.",
+                 "I'm Sorry about that.", "Hello, how can I help you?"]:
+        assert not INTRODUCTION.search(text), text
+    for text in ["Have a good one!", "Have a wonderful rest of your day!", "Have a great afternoon.", "Take care!",
+                 "Have a great night!"]:
+        assert GOODBYE.search(text), text
+    assert not GOODBYE.search("Have a look at the first page of the report.")

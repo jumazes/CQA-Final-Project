@@ -15,11 +15,14 @@ from .schemas import Role
 
 GREETING = re.compile(
     r"\b(здравствуй\w*|добр(ый|ое|ого) (день|вечер|утро|времени)|приветствую|сәлем\w*|салем\w*|армысыз|"
-    r"қайырлы (күн|таң|кеш)|кайырлы (кун|тан|кеш)|salem\w*|qayirli \w+|hello|hi|good (morning|afternoon|evening))\b",
+    r"қайырлы (күн|таң|кеш)|кайырлы (кун|тан|кеш)|salem\w*|qayirli \w+|hello|hi|hey|greetings|good (morning|afternoon|evening))\b",
     re.IGNORECASE,
 )
 INTRODUCTION = re.compile(
-    r"(меня зовут|менің атым|менин атым|menin atym|my name is|\[имя скрыто\]|\[name hidden\])",
+    r"(меня зовут|менің атым|менин атым|menin atym|my name is|my name['’]s|\[имя скрыто\]|\[name hidden\]|"
+    # "I'm Maya" / "this is Maya": the name must be capitalised and must not be a company or role word.
+    r"\b(i['’]m|i am|this is)\s+(?-i:(?!(?:Freedom|Support|Customer|Service|Broker|Sorry|Glad|Happy|Here|Just|Sure|"
+    r"Afraid|Going|The|Your|Our)\b)[A-Z][a-z]{2,})\b)",
     re.IGNORECASE,
 )
 IDENTITY_VERIFIED = re.compile(
@@ -84,7 +87,8 @@ ROUTINE_QUESTION = re.compile(
 GOODBYE = re.compile(
     r"(до свидания|всего (доброго|хорошего)|хорошего (дня|вечера)|сау болыңыз|сау бол\b|қош болыңыз|"
     r"\bsau bol\w*|\bkosh bol\w*|"
-    r"\bgoodbye\b|\bbye\b|have a (nice|good|great) (day|evening))",
+    r"\bgoodbye\b|\bbye\b|take care|"
+    r"have a (nice|good|great|wonderful|lovely|fantastic) (one|day|evening|afternoon|night|weekend|rest of your day))",
     re.IGNORECASE,
 )
 
