@@ -12,10 +12,10 @@ Labels therefore come from two places:
 
 Run from the ml/ directory:
 
-    uv run python tools/abcd_bench.py build  abcd_v1_1_json.gz --size small
+    uv run python tools/abcd_bench.py build  abcd_v1.1.json.gz --size small
     uv run python eval/run_dev.py data/abcd/abcd_dataset.json --labels data/abcd/abcd_labels.json --out runs/abcd
     uv run python tools/abcd_bench.py score  runs/abcd/responses.jsonl data/abcd/abcd_labels.json
-    uv run python tools/abcd_bench.py audit  abcd_v1_1_json.gz        # no model needed: checks the regex layer
+    uv run python tools/abcd_bench.py audit  abcd_v1.1.json.gz        # no model needed: checks the regex layer
 """
 
 from __future__ import annotations
@@ -446,7 +446,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = parser.add_subparsers(dest="cmd", required=True)
     b = sub.add_parser("build")
-    b.add_argument("abcd", type=Path, help="abcd_v1_1_json.gz")
+    b.add_argument("abcd", type=Path, help="abcd_v1.1.json.gz")
     b.add_argument("--out", type=Path, default=ROOT / "data" / "abcd")
     b.add_argument("--size", choices=SIZES, default="small")
     b.add_argument("--natural", type=int, help="override the number of untouched dialogs")
